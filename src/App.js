@@ -5,18 +5,24 @@ const ReactMarkdown = require('react-markdown');
 
 function App() {
 
-  const [input, setInput] = useState('**test**')
+  const [input, setInput] = useState('**test**');
+  const [previewInput, setPreviewInput] = useState(input);
+
+  const handleTextInput = (e) => {
+    const newInput = e.target.value;
+    setInput(newInput);
+    setPreviewInput(newInput);
+  }
+
 
   return (
     <div className="App">
       <TextEditor 
-        onChange = {(e) => {
-          const newInput = e.target.value;
-          setInput(newInput)}}
+        onChange = {handleTextInput}
         value={input}
       />
       <ReactMarkdown
-        source={input}
+        source={previewInput}
       />
       
     </div>
