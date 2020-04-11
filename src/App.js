@@ -1,30 +1,32 @@
-import React, {useState} from "react";
-import TextEditor from './TextEditor';
+import React, { useState } from "react";
+import AceEditor from "react-ace";
+import marked from "marked";
+import "ace-builds/src-noconflict/mode-markdown";
+import "ace-builds/src-noconflict/theme-github";
 import "./App.css";
-const ReactMarkdown = require('react-markdown');
 
 function App() {
+  const [input, setInput] = useState("*test*");
 
-  const [input, setInput] = useState('**test**');
-  const [previewInput, setPreviewInput] = useState(input);
-
-  const handleTextInput = (e) => {
-    const newInput = e.target.value;
+  const handleChange = (value) => {
+    const newInput = value;
     setInput(newInput);
-    setPreviewInput(newInput);
-  }
-
+  };
 
   return (
     <div className="App">
-      <TextEditor 
-        onChange = {handleTextInput}
+      <div className="bar">Editor</div>
+      <AceEditor
+        mode="markdown"
+        theme="github"
+        onChange={handleChange}
         value={input}
       />
-      <ReactMarkdown
-        source={previewInput}
-      />
-      
+      <div className="bar">Preview</div>
+      <div
+        dangerouslySetInnerHTML={{ __html: marked(input) }}
+        className="preview"
+      ></div>
     </div>
   );
 }

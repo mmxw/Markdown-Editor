@@ -2,8 +2,19 @@
   box-sizing: border-box;
 }
 
+.App {
+  display: flex;
+  flex-direction: column;
+}
+
+.bar {
+  width: 100vw;
+  text-align: center;
+  background-color: lightgray;
+  font-size: x-large;
+}
+
 .preview {
-  width: 400px;
+  width: 100vw;
   height: 800px;
-  border: 1px lightgray solid;
 }
