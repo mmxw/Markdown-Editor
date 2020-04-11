@@ -1,0 +1,9 @@
+* {
+  box-sizing: border-box;
+}
+
+.preview {
+  width: 400px;
+  height: 800px;
+  border: 1px lightgray solid;
+}
